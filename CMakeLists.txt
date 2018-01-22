@@ -4,6 +4,7 @@ project (myApp)
 set(CMAKE_VERBOSE_MAKEFILE 1)
 set(APP_VERSION_MAJOR 1)
 set(APP_VERSION_MINOR 0)
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 set(APP_TARGET demo.app)
 include_directories(./include)
 

@@ -1,20 +1,34 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-extern struct gladGLversionStruct GLVersion;
+//extern struct gladGLversionStruct GLVersion;
 
-typedef void* (* GLADloadproc)(const char *name);
+//typedef void* (* GLADloadproc)(const char *name);
 using namespace std;
+class test {
+    int x,y,z;
+    public: 
+    test()
+    {
+    x=y=z=0;
+    }
+
+    int getx()
+    {
+       return x;
+    }
+
+};
 
 int main(){
     GLFWwindow* window;
     if (!glfwInit())
-        exit(EXIT_FAILURE);
+       return -1;
     window = glfwCreateWindow(640, 480, "test", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
-        exit(EXIT_FAILURE);
+        return -1;
     }
     glfwMakeContextCurrent(window);
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
@@ -25,5 +39,9 @@ int main(){
         glfwSwapBuffers(window);
         glfwPollEvents(); 
     }
-    return 0;
+   test* t = new test();
+   t->getx();
+   test p;
+
+   return 0;
 }
