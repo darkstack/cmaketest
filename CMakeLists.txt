@@ -16,7 +16,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 	message("You're on Windows !")
         set(GLFW_INCLUDE_PATH "libs/glfw/include" CACHE PATH "libs/glfw/include" )
-        set(GLFW_LIBRARY "libs/glfw/src/Release/glfw3.lib" CACHE FILEPATH "libs/glfw/src/Release/glfw3.lib" )
+        set(GLFW_LIBRARY "libs/glfw/src/Release/glfw3" CACHE FILEPATH "libs/glfw/src/Release/glfw3.lib" )
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # Yes this is weird but you have to repeat the "if" here.
 
 # opengl
