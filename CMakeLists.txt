@@ -36,7 +36,8 @@ include_directories(
 link_libraries(${GLFW_LIBRARY_DIRS})
 
 add_executable( 
-    ${APP_TARGET} 
+    ${APP_TARGET}
+    test.cpp
     main.cpp
     glad.c
 )

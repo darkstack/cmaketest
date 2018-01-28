@@ -1,6 +1,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "test.cpp"
 //extern struct gladGLversionStruct GLVersion;
 
 //typedef void* (* GLADloadproc)(const char *name);
@@ -19,9 +20,28 @@ class test {
     }
 
 };
+float a=1.0f,b=1.0f,c=1.0f;
+
+int test2()
+{
+   if(a!=0.0f)
+   {
+      a-= 0.001f;
+   
+   }
+   else
+   {
+      a=.0f;
+   }
+   glClearColor(a,a,a,a);
+   return 1;
+}
 
 int main(){
-    GLFWwindow* window;
+   player p1;
+   int x = p1.getHealth();
+   printf("%i",x);
+   GLFWwindow* window;
     if (!glfwInit())
        return -1;
     window = glfwCreateWindow(640, 480, "test", NULL, NULL);
@@ -37,7 +57,9 @@ int main(){
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glfwSwapBuffers(window);
-        glfwPollEvents(); 
+        glfwPollEvents();
+        test2();
+
     }
    test* t = new test();
    t->getx();
