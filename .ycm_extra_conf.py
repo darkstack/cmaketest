@@ -41,6 +41,7 @@ flags = [
 '-x', 'c++',
 '-I', './include',
 '-I', './libs/glfw/include',
+'-I', './libs/glm/glm',
 '-I', 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include',
 '-I', 'C:/Program Files (x86)/Windows Kits/10/Include/10.0.10150.0/ucrt',
 '-I', 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/atlmfc/include',

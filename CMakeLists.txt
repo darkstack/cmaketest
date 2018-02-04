@@ -19,6 +19,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         set(GLFW_LIBRARY "libs/glfw/src/Release/glfw3" CACHE FILEPATH "libs/glfw/src/Release/glfw3.lib" )
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # Yes this is weird but you have to repeat the "if" here.
 
+set(GLM_INCLUDE_PATH "libs/glm/glm" CACHE PATH "libs/glm/glm" )
 # opengl
 find_package(OpenGL REQUIRED)
 
@@ -27,9 +28,11 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(libs/glfw)
+add_subdirectory(libs/glm)
 include_directories(
     ${OPENGL_INCLUDE_DIRS}
     ${GLFW_INCLUDE_PATH}
+    ${GLM_INCLUDE_PATH}
     "include/"
     )
 
@@ -39,6 +42,7 @@ add_executable(
     ${APP_TARGET}
     test.cpp
     main.cpp
+    game.cpp
     glad.c
 )
 

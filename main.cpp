@@ -1,69 +1,45 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm.hpp>
 #include "test.cpp"
+#include "game.cpp"
 //extern struct gladGLversionStruct GLVersion;
 
 //typedef void* (* GLADloadproc)(const char *name);
 using namespace std;
-class test {
-    int x,y,z;
-    public: 
-    test()
-    {
-    x=y=z=0;
-    }
 
-    int getx()
-    {
-       return x;
-    }
-
-};
-float a=1.0f,b=1.0f,c=1.0f;
-
-int test2()
-{
-   if(a!=0.0f)
-   {
-      a-= 0.001f;
-   
-   }
-   else
-   {
-      a=.0f;
-   }
-   glClearColor(a,a,a,a);
-   return 1;
-}
-
-int main(){
+int main(int argc,char** argv[]){
+   glm::mat4 test; 
+   Game game;
+   int x,y;
    player p1;
-   int x = p1.getHealth();
-   printf("%i",x);
    GLFWwindow* window;
-    if (!glfwInit())
-       return -1;
-    window = glfwCreateWindow(640, 480, "test", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-    glfwMakeContextCurrent(window);
-    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-    glfwSwapInterval(1);
-    while (!glfwWindowShouldClose(window))
-    {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-        test2();
-
-    }
-   test* t = new test();
-   t->getx();
-   test p;
+   if (!glfwInit())
+      return -1;
+   window = glfwCreateWindow(640, 480, "test",NULL, NULL);
+   if (!window)
+   {
+      glfwTerminate();
+      return -1;
+   }
+   glfwMakeContextCurrent(window);
+   gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+   glfwSwapInterval(1);
+   glfwGetWindowSize(window,&x,&y);
+   game.setSize(x,y);
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glOrtho(0,x,y,0.0f,0.0f,1.0f);
+   while (!glfwWindowShouldClose(window))
+   {
+      glfwGetWindowSize(window,&x,&y);
+      glClear(GL_COLOR_BUFFER_BIT);
+      game.process();
+      glfwSwapBuffers(window);
+      glfwPollEvents();
+      game.printSize();
+   }
 
    return 0;
 }
